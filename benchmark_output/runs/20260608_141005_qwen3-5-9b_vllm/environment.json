@@ -1,0 +1,61 @@
+{
+  "platform": "Linux-5.15.0-181-generic-x86_64-with-glibc2.35",
+  "python_version": "3.10.12",
+  "machine": "x86_64",
+  "processor": "x86_64",
+  "runtime_checks": {
+    "docker": {
+      "installed": true,
+      "path": "/usr/bin/docker",
+      "version": "Docker version 29.5.2, build 79eb04c",
+      "daemon_ok": true,
+      "image": "vllm-openai:latest",
+      "image_exists": true,
+      "ok": true,
+      "error": null
+    },
+    "port": {
+      "host": "0.0.0.0",
+      "port": 8000,
+      "available": true,
+      "error": null
+    },
+    "gpu": {
+      "nvidia_smi": "/usr/bin/nvidia-smi",
+      "gpu_available": true,
+      "gpu_count": 2,
+      "gpus": [
+        {
+          "index": "0",
+          "name": "NVIDIA GeForce RTX 3090",
+          "memory_total_mb": "24576"
+        },
+        {
+          "index": "1",
+          "name": "NVIDIA GeForce RTX 3090",
+          "memory_total_mb": "24576"
+        }
+      ],
+      "error": null
+    },
+    "disk": {
+      "path": "benchmark_output/runs",
+      "free_gb": 684.167,
+      "total_gb": 878.645,
+      "used_gb": 149.775
+    },
+    "docker_required": true,
+    "gpu_required": true
+  },
+  "gpu_topology": {
+    "available": true,
+    "links": [
+      "NV",
+      "PIX",
+      "PXB",
+      "PHB",
+      "SYS"
+    ],
+    "raw": "\t\u001b[4mGPU0\tGPU1\tCPU Affinity\tNUMA Affinity\tGPU NUMA ID\u001b[0m\nGPU0\t X \tSYS\t0,2,4,6,8,10\t0\t\tN/A\nGPU1\tSYS\t X \t1,3,5,7,9,11\t1\t\tN/A\n\nLegend:\n\n  X    = Self\n  SYS  = Connection traversing PCIe as well as the SMP interconnect between NUMA nodes (e.g., QPI/UPI)\n  NODE = Connection traversing PCIe as well as the interconnect between PCIe Host Bridges within a NUMA node\n  PHB  = Connection traversing PCIe as well as a PCIe Host Bridge (typically the CPU)\n  PXB  = Connection traversing multiple PCIe bridges (without traversing the PCIe Host Bridge)\n  PIX  = Connection traversing at most a single PCIe bridge\n  NV#  = Connection traversing a bonded set of # NVLinks\n"
+  }
+}

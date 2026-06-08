@@ -1,0 +1,2 @@
+{"prompt":"Summarize the following incident notes and list the likely bottlenecks: GPU utilization is high during prefill, memory grows with concurrency, and P99 latency increases after concurrency 8.","max_tokens":64,"metadata":{"case":"incident-summary"}}
+{"messages":[{"role":"system","content":"You are a benchmark assistant."},{"role":"user","content":"Read this synthetic support conversation and produce a concise resolution plan. The deployment uses tensor parallelism and a serving backend."}],"max_tokens":32,"metadata":{"case":"chat-style"}}

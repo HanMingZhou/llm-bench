@@ -1,0 +1,42 @@
+[build-system]
+requires = ["setuptools>=68", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "autoctl-llm-bench"
+version = "0.1.0"
+description = "Benchmark CLI for LLM inference (vLLM / SGLang / transformers) and NCCL all-reduce."
+readme = "README.md"
+requires-python = ">=3.9"
+dependencies = [
+  "PyYAML>=6.0",
+  "matplotlib>=3.7",
+]
+
+[project.optional-dependencies]
+# Optional: precise token counting via HuggingFace tokenizer (falls back to
+# word-count estimate when not installed).
+tokenizer = [
+  "transformers>=4.40",
+]
+test = [
+  "pytest>=8.0",
+]
+dev = [
+  "pytest>=8.0",
+]
+binary = [
+  "pyinstaller>=6.0",
+]
+
+[project.scripts]
+llm-bench = "llm_bench.cli:main"
+
+[tool.setuptools.packages.find]
+where = ["."]
+include = ["llm_bench*"]
+
+[tool.pytest.ini_options]
+markers = [
+  "integration: tests that require Docker, GPU, or local model assets",
+]

@@ -1,0 +1,55 @@
+
+==========
+== CUDA ==
+==========
+
+CUDA Version 12.2.2
+
+Container image Copyright (c) 2016-2023, NVIDIA CORPORATION & AFFILIATES. All rights reserved.
+
+This container image and its contents are governed by the NVIDIA Deep Learning Container License.
+By pulling and using the container, you accept the terms and conditions of this license:
+https://developer.nvidia.com/ngc/nvidia-deep-learning-container-license
+
+A copy of this license is made available in this container at /NGC-DL-CONTAINER-LICENSE for your convenience.
+
+# nThread 1 nGpus 1 minBytes 8 maxBytes 1073741824 step: 2(factor) warmup iters: 20 iters: 100 agg iters: 1 validation: 1 graph: 0
+#
+# Using devices
+#  Rank  0 Group  0 Pid      1 on f3f5352cec99 device  0 [0x03] NVIDIA GeForce RTX 3090
+#
+#                                                              out-of-place                       in-place          
+#       size         count      type   redop    root     time   algbw   busbw #wrong     time   algbw   busbw #wrong
+#        (B)    (elements)                               (us)  (GB/s)  (GB/s)            (us)  (GB/s)  (GB/s)       
+           8             2     float     sum      -1     4.47    0.00    0.00      0     0.28    0.03    0.00      0
+          16             4     float     sum      -1     4.95    0.00    0.00      0     0.27    0.06    0.00      0
+          32             8     float     sum      -1     4.74    0.01    0.00      0     0.27    0.12    0.00      0
+          64            16     float     sum      -1     4.77    0.01    0.00      0     0.27    0.23    0.00      0
+         128            32     float     sum      -1     4.78    0.03    0.00      0     0.27    0.47    0.00      0
+         256            64     float     sum      -1     4.75    0.05    0.00      0     0.27    0.94    0.00      0
+         512           128     float     sum      -1     4.75    0.11    0.00      0     0.27    1.87    0.00      0
+        1024           256     float     sum      -1     4.70    0.22    0.00      0     0.27    3.75    0.00      0
+        2048           512     float     sum      -1     4.71    0.43    0.00      0     0.27    7.48    0.00      0
+        4096          1024     float     sum      -1     4.72    0.87    0.00      0     0.27   15.02    0.00      0
+        8192          2048     float     sum      -1     4.53    1.81    0.00      0     0.27   30.03    0.00      0
+       16384          4096     float     sum      -1     4.52    3.62    0.00      0     0.27   59.84    0.00      0
+       32768          8192     float     sum      -1     4.66    7.04    0.00      0     0.27  119.64    0.00      0
+       65536         16384     float     sum      -1     4.57   14.36    0.00      0     0.27  238.60    0.00      0
+      131072         32768     float     sum      -1     4.69   27.96    0.00      0     0.27  478.50    0.00      0
+      262144         65536     float     sum      -1     4.57   57.36    0.00      0     0.27  955.16    0.00      0
+      524288        131072     float     sum      -1     4.29  122.09    0.00      0     0.27  1920.61    0.00      0
+     1048576        262144     float     sum      -1     4.77  219.86    0.00      0     0.27  3825.52    0.00      0
+     2097152        524288     float     sum      -1     6.72  312.09    0.00      0     0.27  7646.58    0.00      0
+     4194304       1048576     float     sum      -1    11.81  355.01    0.00      0     0.28  15223.23    0.00      0
+     8388608       2097152     float     sum      -1    22.12  379.19    0.00      0     0.27  30652.27    0.00      0
+    16777216       4194304     float     sum      -1    41.95  399.94    0.00      0     0.33  50241.72    0.00      0
+    33554432       8388608     float     sum      -1    81.84  410.00    0.00      0     0.27  122640.47    0.00      0
+    67108864      16777216     float     sum      -1    161.2  416.37    0.00      0     0.27  244860.31    0.00      0
+   134217728      33554432     float     sum      -1    319.9  419.50    0.00      0     0.28  486490.01    0.00      0
+   268435456      67108864     float     sum      -1    637.3  421.22    0.00      0     0.27  976946.01    0.00      0
+   536870912     134217728     float     sum      -1   1273.5  421.57    0.00      0     0.28  1947301.10    0.00      0
+  1073741824     268435456     float     sum      -1   2542.9  422.25    0.00      0     0.28  3890791.84    0.00      0
+# Out of bounds values : 0 OK
+# Avg bus bandwidth    : 0 
+#
+

@@ -1,0 +1,7 @@
+{
+  "prompt": "Review this capacity planning note and recommend a benchmark profile for acceptance testing. The cluster has 8 GPUs and serves mixed short chat plus long document summarization traffic.",
+  "max_tokens": 48,
+  "metadata": {
+    "case": "capacity-planning"
+  }
+}

@@ -1,0 +1,84 @@
+backend:
+  name: vllm
+  image: vllm-openai:latest
+  port: 8000
+  model_name: Qwen3.5-9B
+  hf_cache: /root/.cache/huggingface
+  hf_token: ''
+  docker_args:
+  - --gpus
+  - all
+  - --shm-size
+  - 16g
+  - --ipc=host
+  extra_mounts:
+  - /root/.cache/modelscope:/root/.cache/modelscope
+  command:
+  - /root/.cache/modelscope/hub/models/Qwen/Qwen3.5-9B
+  - --host
+  - 0.0.0.0
+  - --port
+  - '8000'
+  - --served-model-name
+  - Qwen3.5-9B
+  - --tensor-parallel-size
+  - '2'
+  - --gpu-memory-utilization
+  - '0.9'
+  - --max-model-len
+  - '4096'
+  startup_timeout_seconds: 900
+  keep_container: false
+transformers:
+  model_path: ''
+  tokenizer_path: ''
+  torch_dtype: bfloat16
+  device_map: auto
+  trust_remote_code: false
+  revision: main
+  quantization: ''
+  low_cpu_mem_usage: true
+  do_sample: false
+  top_k: 50
+  repetition_penalty: 1.0
+  num_beams: 1
+  batch_size: 1
+workload:
+  profile: quick
+  mode: fixed
+  api: completions
+  input_tokens:
+  - 512
+  output_tokens:
+  - 128
+  concurrency:
+  - 1
+  - 4
+  total_requests: 32
+  duration_seconds: null
+  warmup_requests: 4
+  request_timeout_seconds: 120
+  stream: true
+  seed: 42
+  prompt_jsonl: ''
+  prompt_dir: ''
+  prompt_dir_recursive: true
+  prompt_include: '*.txt,*.md,*.json,*.jsonl'
+  prompt_exclude: ''
+  temperature: 0.0
+  top_p: 1.0
+report:
+  output_dir: benchmark_output/runs
+  run_name: ''
+  tags: []
+  include_samples: false
+  save_request_metrics: true
+  save_gpu_metrics: true
+  save_logs: true
+retention:
+  request_metrics_days: null
+  gpu_metrics_days: null
+  logs_days: null
+  keep_summary_forever: true
+  keep_output_samples: true
+skip_env_check: false

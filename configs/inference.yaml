@@ -1,0 +1,74 @@
+backend:
+  name: vllm
+  image: vllm/vllm-openai:latest
+  port: 8000
+  model_name: Qwen/Qwen2.5-7B-Instruct
+  hf_cache: ~/.cache/huggingface
+  hf_token: ""
+  startup_timeout_seconds: 900
+  keep_container: false
+  docker_args:
+    - --gpus
+    - all
+    - --shm-size
+    - 16g
+    - --ipc=host
+  command:
+    - vllm
+    - serve
+    - /root/.cache/huggingface/hub/models--Qwen--Qwen2.5-7B-Instruct/snapshots/<replace-me>
+    - --host
+    - 0.0.0.0
+    - --port
+    - "8000"
+    - --tensor-parallel-size
+    - "1"
+    - --gpu-memory-utilization
+    - "0.9"
+    - --max-model-len
+    - "4096"
+
+# transformers backend block. Only used when backend.name = transformers.
+# Field names mirror transformers' from_pretrained / generate exactly.
+transformers:
+  model_path: ""
+  tokenizer_path: ""
+  torch_dtype: bfloat16
+  device_map: auto
+  trust_remote_code: false
+  revision: main
+  quantization: ""
+  low_cpu_mem_usage: true
+  do_sample: false
+  top_k: 50
+  repetition_penalty: 1.0
+  num_beams: 1
+  batch_size: 1
+
+workload:
+  profile: quick
+  api: completions
+  stream: true   # 流式才能准确测 TTFT / TPOT；设为 false 时 TTFT == E2E
+  prompt_dir: examples/prompts
+  prompt_include: "*.txt,*.md,*.json,*.jsonl"
+  warmup_requests: 4
+  request_timeout_seconds: 120
+  temperature: 0.0
+  top_p: 1.0
+  seed: 42
+
+report:
+  output_dir: benchmark_output/runs
+  run_name: ""
+  tags: []
+  include_samples: false
+  save_request_metrics: true
+  save_gpu_metrics: true
+  save_logs: true
+
+retention:
+  request_metrics_days: 90
+  gpu_metrics_days: 90
+  logs_days: 30
+
+skip_env_check: false

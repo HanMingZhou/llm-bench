@@ -1,0 +1,43 @@
+backend:
+  name: vllm
+  image: vllm-openai:latest
+  extra_mounts:
+  - /root/.cache/modelscope:/root/.cache/modelscope
+  model_name: Qwen3.5-9B
+  command_model_path: /root/.cache/modelscope/hub/models/Qwen/Qwen3.5-9B
+  vllm_launcher_label: (无前缀，镜像 ENTRYPOINT 已是 vllm serve)  (推荐，官方 vllm/vllm-openai
+    镜像)
+  command:
+  - /root/.cache/modelscope/hub/models/Qwen/Qwen3.5-9B
+  - --host
+  - 0.0.0.0
+  - --port
+  - '8000'
+  - --served-model-name
+  - Qwen3.5-9B
+  - --tensor-parallel-size
+  - '2'
+  - --gpu-memory-utilization
+  - '0.9'
+  - --max-model-len
+  - '4096'
+  docker_args:
+  - --gpus
+  - all
+  - --shm-size
+  - 16g
+  - --ipc=host
+  port: 8000
+workload:
+  profile: quick
+  concurrency:
+  - 1
+  - 4
+  input_tokens:
+  - 512
+  output_tokens:
+  - 128
+  total_requests: 32
+  api: completions
+  stream: true
+  mode: fixed

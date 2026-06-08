@@ -1,0 +1,15 @@
+{
+  "success": true,
+  "rows": 28,
+  "max_busbw_gbps": 0.0,
+  "max_busbw_inplace_gbps": 0.0,
+  "max_algbw_gbps": 422.25,
+  "max_algbw_inplace_gbps": 3890791.84,
+  "min_time_us": 4.29,
+  "largest_size_bytes": 1073741824,
+  "largest_size_busbw_gbps": 0.0,
+  "largest_size_busbw_inplace_gbps": 0.0,
+  "max_error": 0.0,
+  "max_error_inplace": 0.0,
+  "non_zero_error_rows": 0
+}

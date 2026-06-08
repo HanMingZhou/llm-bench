@@ -1,0 +1,5 @@
+Analyze the following synthetic deployment notes and produce a short diagnosis.
+
+worker-0 prefill latency increased after long context requests arrived.
+worker-1 decode throughput remained stable but queueing delay increased.
+The NCCL all-reduce benchmark should be checked against tensor parallel scaling.
