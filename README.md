@@ -1,6 +1,8 @@
 # llm-bench
 
-<img src="logo.png" alt="llm-bench logo" width="180">
+<p align="center">
+  <img src="logo.png" alt="llm-bench logo" width="180">
+</p>
 
 > **本地大模型推理与 NCCL 通信 benchmark 一站式命令行工具**
 
